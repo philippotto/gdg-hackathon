@@ -40,7 +40,7 @@ function renderChoices(tweets, solutionId) {
 }
 
 var currentTaskIndex = 0;
-var timeoutId = null;
+var timeoutIds = [];
 
 function renderTask() {
   // renderQuestion({text : "a special tweet text!!"});
@@ -78,19 +78,13 @@ function renderTask() {
 			      $("tweet-choice").css({ "margin-left" : "0"});
 
 
-		    	timeoutId = setTimeout(function() {renderNext(i + 1)}, 3000)
+		    	timeoutIds.push(setTimeout(function() {renderNext(i + 1)}, 3000));
 
     	}
     }
 
     renderNext(0);
 
-    
-
-    // renderQuestion(data.tweets[0]);
-
-
-    
   });
 }
 
@@ -100,7 +94,7 @@ renderTask();
 
 
 function clearTask() {
-	clearTimeout(timeoutId);
+  timeoutIds.forEach(clearTimeout);
 
   $("tweet-to-guess").css({ "margin-left" : "-5000px"});
   $("tweet-choice").css({ "margin-left" : "5000px"});
