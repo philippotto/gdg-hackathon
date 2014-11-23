@@ -75,10 +75,10 @@ paper-tabs[noink][nobar] paper-tab.core-selected {
 }
 
 * {
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.8s ease-in-out;
+  -moz-transition: all 0.8s ease-in-out;
+  -o-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
 }
 
 .correct-choice {
@@ -87,4 +87,8 @@ paper-tabs[noink][nobar] paper-tab.core-selected {
 
 .wrong-choice {
   background-color: #F44336;
+}
+
+body {
+  overflow: hidden;
 }

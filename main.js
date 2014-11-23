@@ -10,17 +10,29 @@ function renderQuestion(tweet) {
 }
 
 function renderChoices(tweets, solutionId) {
-  tweets.forEach(function(tweet) {
+  var correctDiv;
+  var showCorrect = function() {
+    correctDiv.addClass("correct-choice");
+  }
+
+  tweets.forEach(function(tweetObj) {
     var newCard = document.createElement("tweet-choice");
-    newCard.setAttribute("image", "image");
-    newCard.setAttribute("name", tweet);
+    newCard.setAttribute("image", tweetObj.profile_image_url);
+    console.log("tweet",  tweetObj.name);
+    newCard.setAttribute("name", tweetObj.name);
+    if (solutionId === tweetObj.screen_name) {
+      correctDiv = $(newCard);
+    }
+
     $(newCard).click(function() {
-      if (solutionId === tweet) {
+      if (solutionId === tweetObj.screen_name) {
         $(newCard).addClass("correct-choice");
       } else {
         $(newCard).addClass("wrong-choice");
-
+        showCorrect();
       }
+
+      setTimeout(clearTask, 2000);
       console.log("clicked on question");
     });
     document.getElementsByClassName('choices')[0].appendChild(newCard);
@@ -30,6 +42,13 @@ function renderChoices(tweets, solutionId) {
 var currentTaskIndex = 0;
 
 function renderTask() {
+  // renderQuestion({text : "a special tweet text!!"});
+  // renderChoices(["Philipp", "Sven", "Nico"], "Sven");
+  // setTimeout(function() {
+
+  // }, 0);
+  // return;
+
   $.ajax("./next").then(function(data) {
     // solutionId
     // otherUsers
@@ -42,10 +61,25 @@ function renderTask() {
 
     renderQuestion(data.tweets[0]);
     renderChoices(data.otherUsers, data.solutionId);
+    $("tweet-to-guess").css({ "margin-left" : "0"});
+    $("tweet-choice").css({ "margin-left" : "0"});
   });
 }
 
-renderQuestion({text : "a special tweet text!!"});
-renderChoices(["Philipp", "Sven", "Nico"], "Sven");
 
-// renderTask();
+
+renderTask();
+
+
+function clearTask() {
+  $("tweet-to-guess").css({ "margin-left" : "-5000px"});
+  $("tweet-choice").css({ "margin-left" : "5000px"});
+
+  setTimeout(function() {
+    $("tweet-to-guess").remove();
+    $("tweet-choice").remove();
+
+    renderTask();
+  }, 1000);
+
+}
