@@ -13,8 +13,9 @@ function renderQuestion(tweet) {
 
 function renderChoices(tweets) {
   tweets.forEach(function(tweet) {
-    var newCard = document.createElement("tweet-to-guess");
-
+    var newCard = document.createElement("tweet-choice");
+    newCard.setAttribute("name", "name");
+    newCard.setAttribute("image", "image");
     newCard.setAttribute("content", tweet);
     document.getElementsByClassName('choices')[0].appendChild(newCard);
   });
