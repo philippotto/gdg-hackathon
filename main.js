@@ -32,7 +32,7 @@ function renderChoices(tweets, solutionId) {
         showCorrect();
       }
 
-      setTimeout(clearTask, 2000);
+      setTimeout(clearTask, 1500);
       console.log("clicked on question");
     });
     document.getElementsByClassName('choices')[0].appendChild(newCard);
@@ -41,6 +41,12 @@ function renderChoices(tweets, solutionId) {
 
 var currentTaskIndex = 0;
 
+var currentPromise = 0;
+var promises = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function() {
+  return $.ajax("./next");
+})
+
+
 function renderTask() {
   // renderQuestion({text : "a special tweet text!!"});
   // renderChoices(["Philipp", "Sven", "Nico"], "Sven");
@@ -48,8 +54,10 @@ function renderTask() {
 
   // }, 0);
   // return;
-
-  $.ajax("./next").then(function(data) {
+  if (currentPromise == promises.length) {
+    currentPromise = 0;
+  }
+  promises[currentPromise++].then(function(data) {
     // solutionId
     // otherUsers
     // tweets
@@ -61,8 +69,11 @@ function renderTask() {
 
     renderQuestion(data.tweets[0]);
     renderChoices(data.otherUsers, data.solutionId);
-    $("tweet-to-guess").css({ "margin-left" : "0"});
-    $("tweet-choice").css({ "margin-left" : "0"});
+    setTimeout(function() {
+      $("tweet-to-guess").css({ "margin-left" : "0"});
+      $("tweet-choice").css({ "margin-left" : "0"});
+
+    }, 100);
   });
 }
 
@@ -79,7 +90,9 @@ function clearTask() {
     $("tweet-to-guess").remove();
     $("tweet-choice").remove();
 
-    renderTask();
+    setTimeout(function() {
+      renderTask();
+    }, 100)
   }, 1000);
 
 }
