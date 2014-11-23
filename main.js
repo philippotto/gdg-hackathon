@@ -1,26 +1,49 @@
-function renderCard(tweet) {
+function renderQuestion(tweet) {
+  console.log("executed");
   var newCard = document.createElement("tweet-to-guess");
   // newCard.setAttribute("id", "my-element-id");
-  //
+
   newCard.setAttribute("content", tweet.content);
   newCard.setAttribute("title", tweet.title);
   newCard.setAttribute("image", tweet.image);
-  document.getElementsByClassName('tweet-container')[0].appendChild(newCard);
+  document.getElementsByClassName('question')[0].appendChild(newCard);
 }
 
-renderCard({
+function renderChoices(tweets) {
+  tweets.forEach(function(tweet) {
+    var newCard = document.createElement("tweet-to-guess");
+    // newCard.setAttribute("id", "my-element-id");
+
+    newCard.setAttribute("content", tweet.content);
+    newCard.setAttribute("title", tweet.title);
+    newCard.setAttribute("image", tweet.image);
+    document.getElementsByClassName('choices')[0].appendChild(newCard);
+  });
+}
+
+renderQuestion({
   content: "content",
-  "title": "title",
-  "image": "image"
+  title: "title",
+  image: "image"
 });
 
-renderCard({
+renderChoices([{
   content: "content",
-  "title": "title",
-  "image": "image"
-});
+  title: "title",
+  image: "image"
+},
+{
+  content: "content",
+  title: "title",
+  image: "image"
+},
+{
+  content: "content",
+  title: "title",
+  image: "image"
+}]);
 
-function renderQuestion() {
+function renderTask() {
   $.ajax("./getNextQuestion").then(function() {
 
   });
