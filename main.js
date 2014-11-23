@@ -4,9 +4,7 @@ function renderQuestion(tweet) {
   // newCard.setAttribute("id", "my-element-id");
 
   newCard.setAttribute("content", tweet.text);
-  newCard.setAttribute("clickHandler", function() {
-    console.log("clicked on question");
-  });
+
 
   document.getElementsByClassName('question')[0].appendChild(newCard);
 }
@@ -17,6 +15,9 @@ function renderChoices(tweets) {
     newCard.setAttribute("name", "name");
     newCard.setAttribute("image", "image");
     newCard.setAttribute("content", tweet);
+    $(newCard).click(function() {
+      console.log("clicked on question");
+    });
     document.getElementsByClassName('choices')[0].appendChild(newCard);
   });
 }

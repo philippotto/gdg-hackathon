@@ -63,7 +63,6 @@ paper-tabs[noink][nobar] paper-tab.core-selected {
 .question {
   width: 40%;
   height: 500px;
-  border: 1px solid black;
   position: absolute;
   left: 5%;
 }
@@ -71,7 +70,6 @@ paper-tabs[noink][nobar] paper-tab.core-selected {
 .choices {
   width: 40%;
   height: 500px;
-  border: 1px solid black;
   position: absolute;
   left: 55%;
 }
