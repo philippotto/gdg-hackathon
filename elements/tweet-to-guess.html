@@ -1,6 +1,6 @@
 <!-- <link rel="import" href="../bower_components/polymer/polymer.html"> -->
 
-<polymer-element name="tweet-to-guess" attributes="image title content" noscript>
+<polymer-element name="tweet-to-guess" attributes="image title content clickHandler" noscript on-click="{{clickHandler}}">
   <template>
     <style media="screen">
     .card-header {
