@@ -1,0 +1,29 @@
+{
+  "name": "gdg-hackathon",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bower": "~1.3.12",
+    "connect": "~3.3.3",
+    "express": "~4.10.2",
+    "lodash": "^2.4.1",
+    "serve-static": "~1.7.1",
+    "twitter": "^0.2.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/philippotto/gdg-hackathon.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/philippotto/gdg-hackathon/issues"
+  },
+  "homepage": "https://github.com/philippotto/gdg-hackathon"
+}
