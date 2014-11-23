@@ -70,11 +70,16 @@ function renderTask() {
     	}
 
     	if(i < data.tweets.length) {
-    		$("tweet-to-guess").remove();
-	    	renderQuestion(data.tweets[i]);
-		    $("tweet-to-guess").css({ "margin-left" : "0"});
-		    $("tweet-choice").css({ "margin-left" : "0"});
-	    	timeoutId = setTimeout(function() {renderNext(i + 1)}, 3000)
+
+	    		$("tweet-to-guess").remove();
+		    	renderQuestion(data.tweets[i]);
+
+			      $("tweet-to-guess").css({ "margin-left" : "100px"});
+			      $("tweet-choice").css({ "margin-left" : "0"});
+
+
+		    	timeoutId = setTimeout(function() {renderNext(i + 1)}, 3000)
+
     	}
     }
 
