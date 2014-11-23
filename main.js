@@ -1,29 +1,51 @@
-function renderCard(tweet) {
+function renderQuestion(tweet) {
+  console.log("executed");
   var newCard = document.createElement("tweet-to-guess");
   // newCard.setAttribute("id", "my-element-id");
-  //
-  newCard.setAttribute("content", tweet.content);
-  newCard.setAttribute("title", tweet.title);
-  newCard.setAttribute("image", tweet.image);
-  document.getElementsByClassName('tweet-container')[0].appendChild(newCard);
+
+  newCard.setAttribute("content", tweet.text);
+
+
+  document.getElementsByClassName('question')[0].appendChild(newCard);
 }
 
-renderCard({
-  content: "content",
-  "title": "title",
-  "image": "image"
-});
+function renderChoices(tweets, solutionId) {
+  tweets.forEach(function(tweet) {
+    var newCard = document.createElement("tweet-choice");
+    newCard.setAttribute("image", "image");
+    newCard.setAttribute("name", tweet);
+    $(newCard).click(function() {
+      if (solutionId === tweet) {
+        $(newCard).addClass("correct-choice");
+      } else {
+        $(newCard).addClass("wrong-choice");
 
-renderCard({
-  content: "content",
-  "title": "title",
-  "image": "image"
-});
-
-function renderQuestion() {
-  $.ajax("./getNextQuestion").then(function() {
-
+      }
+      console.log("clicked on question");
+    });
+    document.getElementsByClassName('choices')[0].appendChild(newCard);
   });
-
-
 }
+
+var currentTaskIndex = 0;
+
+function renderTask() {
+  $.ajax("./next").then(function(data) {
+    // solutionId
+    // otherUsers
+    // tweets
+
+    if (data.tweets.length === 0) {
+      renderTask();
+      return;
+    }
+
+    renderQuestion(data.tweets[0]);
+    renderChoices(data.otherUsers, data.solutionId);
+  });
+}
+
+renderQuestion({text : "a special tweet text!!"});
+renderChoices(["Philipp", "Sven", "Nico"], "Sven");
+
+// renderTask();
