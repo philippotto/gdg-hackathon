@@ -12,7 +12,6 @@ function renderQuestion(tweet) {
 function renderChoices(tweets, solutionId) {
   tweets.forEach(function(tweet) {
     var newCard = document.createElement("tweet-choice");
-    newCard.setAttribute("name", "name");
     newCard.setAttribute("image", "image");
     newCard.setAttribute("name", tweet);
     $(newCard).click(function() {
@@ -46,6 +45,7 @@ function renderTask() {
   });
 }
 
+renderQuestion({text : "a special tweet text!!"});
+renderChoices(["Philipp", "Sven", "Nico"], "Sven");
 
-
-renderTask();
+// renderTask();
