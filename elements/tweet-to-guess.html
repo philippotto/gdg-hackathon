@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="tweet-to-guess" attributes="image title content" noscript>
+<polymer-element name="tweet-to-guess" attributes="title content" noscript>
   <template>
     <style media="screen">
     .card-header {
@@ -10,23 +10,32 @@
     .card-header h2 {
       margin: 0;
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: 400;
     }
     .card-header img {
       width: 70px;
       border-radius: 50%;
-      margin: 10px;
+      margin: 10px 20px 10px 0;
     }
 
     :host {
+      /*border: 1px solid black;*/
+      width: 700px;
+      height: 200px;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      border-radius: 2px;
+      overflow: hidden;
     }
+
     </style>
 
     <div class="card-header" layout horizontal center>
-      <img src="{{ image }}"></img>
-      <content select="h2">{{ title }}</content>
+      <img src="http://google.github.io/material-design-icons/social/svg/ic_person_24px.svg"></img>
+      <h2>{{ title }}</h2>
     </div>
-    <content>{{ content}}</content>
+    <p>{{ content}}<p>
 
   </template>
 </polymer-element>

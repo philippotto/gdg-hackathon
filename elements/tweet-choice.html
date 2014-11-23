@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="tweet-choice" attributes="image name" noscript>
+  <template>
+    <style media="screen">
+    .wrapper {
+      margin-top: 0px;
+    }
+    /* Add your styles here: */
+    .wrapper h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 300;
+    }
+    .wrapper img {
+      width: 60px;
+      border-radius: 50%;
+      margin: 5px;
+    }
+
+    :host {
+      /*border: 1px solid black;*/
+      width: 400px;
+      height: 75px;
+      padding: 5px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      border-radius: 2px;
+
+    }
+    </style>
+    <div class="wrapper" layout horizontal center>
+      <img src="{{image}}" alt="">
+      <h2>{{name}}</h2>
+    </div>
+
+  </template>
+</polymer-element>
