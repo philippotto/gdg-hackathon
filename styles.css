@@ -73,3 +73,18 @@ paper-tabs[noink][nobar] paper-tab.core-selected {
   position: absolute;
   left: 55%;
 }
+
+* {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.correct-choice {
+  background-color: #4CAF50;
+}
+
+.wrong-choice {
+  background-color: #F44336;
+}

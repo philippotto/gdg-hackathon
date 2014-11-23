@@ -9,13 +9,19 @@ function renderQuestion(tweet) {
   document.getElementsByClassName('question')[0].appendChild(newCard);
 }
 
-function renderChoices(tweets) {
+function renderChoices(tweets, solutionId) {
   tweets.forEach(function(tweet) {
     var newCard = document.createElement("tweet-choice");
     newCard.setAttribute("name", "name");
     newCard.setAttribute("image", "image");
-    newCard.setAttribute("content", tweet);
+    newCard.setAttribute("name", tweet);
     $(newCard).click(function() {
+      if (solutionId === tweet) {
+        $(newCard).addClass("correct-choice");
+      } else {
+        $(newCard).addClass("wrong-choice");
+
+      }
       console.log("clicked on question");
     });
     document.getElementsByClassName('choices')[0].appendChild(newCard);
@@ -36,7 +42,7 @@ function renderTask() {
     }
 
     renderQuestion(data.tweets[0]);
-    renderChoices(data.otherUsers);
+    renderChoices(data.otherUsers, data.solutionId);
   });
 }
 
